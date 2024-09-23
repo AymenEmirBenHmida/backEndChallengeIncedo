@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import artistRoutes from "./routes/artistRoutes";
 //integrating the .env file into the project
 dotenv.config();
-
 const app: Application = express();
 //setting up the port to be exposed
 const PORT = process.env.PORT || 3000;

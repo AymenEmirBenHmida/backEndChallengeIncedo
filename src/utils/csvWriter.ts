@@ -31,5 +31,6 @@ export const writeCSV = async (
       image: artist.image || "",
     });
   });
+  //ending the stream
   csvStream.end();
 };
