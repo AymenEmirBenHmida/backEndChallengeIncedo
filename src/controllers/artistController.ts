@@ -10,14 +10,11 @@ export const searchArtistByName = async (req: Request, res: Response) => {
   if (!fileName) {
     return res.status(400).json({ error: "Please provide a fileName" });
   }
-  if (!name) {
-    return res.status(400).json({ error: "Please provide an artist's name" });
-  }
   try {
     //initializing a list of artists
     let artistList: Artist[] = [];
     //search for artist by name
-    artistList = await searchArtist(name);
+    if (name) artistList = await searchArtist(name);
     // when the no artists are returned or no name is given get artists based on a random name
     if (artistList.length === 0) {
       let index = Math.floor(Math.random() * randomArtists.length);
