@@ -9,28 +9,36 @@ export const writeCSV = async (
   fileName: string,
   data: Artist[]
 ): Promise<void> => {
-  //setting the headers for the csv file
-  const csvStream = format({
-    headers: ["name", "mbid", "url", "image_small", "image"],
-  });
-  //setting the name of teh fiel
-  const writableStream = createWriteStream(`${fileName}.csv`);
-  //when the writing is done the promise is resolved
-  writableStream.on("finish", resolve);
-  //and here the promise is rejected on error
-  writableStream.on("error", rejects);
-  // pipe the CSV stream to the writable stream (file)
-  csvStream.pipe(writableStream);
-  // Write each artist's data to the CSV
-  data.forEach((artist) => {
-    csvStream.write({
-      name: artist.name || "",
-      mbid: artist.mbid || "",
-      url: artist.url || "",
-      image_small: artist.image_small || "",
-      image: artist.image || "",
+  return new Promise((resolve, reject) => {
+    // Setting the headers for the CSV file
+    const csvStream = format({
+      headers: ["name", "mbid", "url", "image_small", "image"],
     });
+
+    // Setting the path of the file to be created
+    const writableStream = createWriteStream(`${fileName}.csv`);
+
+    // When the writing is done, the promise is resolved
+    writableStream.on("finish", () => resolve());
+
+    // And here the promise is rejected on error
+    writableStream.on("error", (error) => reject(error));
+
+    // Pipe the CSV stream to the writable stream (file)
+    csvStream.pipe(writableStream);
+
+    // Write each artist's data to the CSV
+    data.forEach((artist) => {
+      csvStream.write({
+        name: artist.name || "",
+        mbid: artist.mbid || "",
+        url: artist.url || "",
+        image_small: artist.image_small || "",
+        image: artist.image || "",
+      });
+    });
+
+    // Ending the stream
+    csvStream.end();
   });
-  //ending the stream
-  csvStream.end();
 };
