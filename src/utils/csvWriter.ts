@@ -14,7 +14,7 @@ export const writeCSV = async (
     headers: ["name", "mbid", "url", "image_small", "image"],
   });
   //setting the name of teh fiel
-  const writableStream = createWriteStream(`${fileName}.csv`);
+  const writableStream = createWriteStream(`csv/${fileName}.csv`);
   //when the writing is done the promise is resolved
   writableStream.on("finish", resolve);
   //and here the promise is rejected on error
