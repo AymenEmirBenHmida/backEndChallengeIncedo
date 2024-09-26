@@ -77,6 +77,21 @@ The API will start running at `http://localhost:3001`.
 ### Parameters
 
 - `name`: (optional) The name of the artist you want to search for.
+
+If the `name` parameter is missing or no artists are found, the API will use random artist names from a local JSON file to search.
+
+### Example Request
+
+```bash
+GET http://localhost:3001/api/artist/search?name=celine
+
+### Endpoint
+
+**GET** `/api/artist/download`
+
+### Parameters
+
+- `name`: (optional) The name of the artist you want to search for.
 - `fileName`: (required) The name of the CSV file that will be generated.
 
 If the `name` parameter is missing or no artists are found, the API will use random artist names from a local JSON file to search.
@@ -84,4 +99,4 @@ If the `name` parameter is missing or no artists are found, the API will use ran
 ### Example Request
 
 ```bash
-GET http://localhost:3001/api/artist/search?name=john
+GET http://localhost:3001/api/artist/download?name=celine&fileName=test
