@@ -17,7 +17,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "fast-csv": "^5.0.1",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

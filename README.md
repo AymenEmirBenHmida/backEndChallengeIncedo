@@ -48,6 +48,7 @@ Make sure you have the following installed on your system:
 
     ```plaintext
     LASTFM_API_KEY=your_api_key_here
+    PORT=3001
     ```
 ## Running the Application
 
@@ -65,7 +66,7 @@ Make sure you have the following installed on your system:
     yarn dev
     ```
 
-The API will start running at `http://localhost:3000`.
+The API will start running at `http://localhost:3001`.
 
 ## API Usage
 
@@ -83,4 +84,4 @@ If the `name` parameter is missing or no artists are found, the API will use ran
 ### Example Request
 
 ```bash
-GET http://localhost:3000/api/artist/search?name=john&fileName=artists
+GET http://localhost:3001/api/artist/search?name=john

@@ -45,22 +45,19 @@ export const downloadArtistsFile = async (req: Request, res: Response) => {
     //generate csv based on the list given
     await writeCSV(fileName, artistList);
     // Resolve file path (adjust to where the CSV file is saved)
-    const filePath = path.resolve(__dirname, `../../${fileName}.csv`);
-    console.log(__dirname, `../../${fileName}.csv`);
+    const filePath = path.resolve(__dirname, `../../csv/${fileName}.csv`);
+    console.log(__dirname, `../../csv/${fileName}.csv`);
     // verify that the file exists before attempting to download
     if (!fs.existsSync(filePath)) {
       console.error(`File not found: ${filePath}`);
       return res.status(404).send("File not found.");
     }
-
     res.download(filePath, (err) => {
       if (err) {
         console.error("Error sending file:", err);
         res.status(500).send("Error downloading file.");
       }
     });
-    //return data
-    // return res.status(200).json({ message: "Success", data: artistList });
   } catch (error) {
     console.error(error);
     //returning error

@@ -16,7 +16,7 @@ export const writeCSV = async (
     });
 
     // Setting the path of the file to be created
-    const writableStream = createWriteStream(`${fileName}.csv`);
+    const writableStream = createWriteStream(`csv/${fileName}.csv`);
 
     // When the writing is done, the promise is resolved
     writableStream.on("finish", () => resolve());
