@@ -30,8 +30,13 @@ Make sure you have the following installed on your system:
     ```bash
     cd backEndChallengeIncedo
     ```
+2. Change into v2 branch:
 
-3. Install dependencies:
+    ```bash
+    git checkout -b v2 remotes/origin/v2
+    ```
+
+4. Install dependencies:
 
     Using npm:
 
@@ -44,7 +49,7 @@ Make sure you have the following installed on your system:
     ```bash
     yarn install
     ```
-4. Set up your environment variables. Make sure to include your API key in a `.env` file, for example:
+5. Set up your environment variables. Make sure to include your API key in a `.env` file, for example:
 
     ```plaintext
     LASTFM_API_KEY=your_api_key_here
@@ -84,7 +89,7 @@ If the `name` parameter is missing or no artists are found, the API will use ran
 
 ```bash
 GET http://localhost:3001/api/artist/search?name=celine
-
+```
 ### Endpoint
 
 **GET** `/api/artist/download`
